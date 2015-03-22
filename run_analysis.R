@@ -4,9 +4,9 @@ setwd("C:/Users/harric17/Desktop/gacd/project/")
 ### read in train and test files
 ### combine with Y and user files
 
-train = read.table("../project/UCI HAR Dataset/train/X_train.txt")
-trainy = read.table("../project/UCI HAR Dataset/train/y_train.txt")
-trainu = read.table("../project/UCI HAR Dataset/train/subject_train.txt")
+train = read.table("../project/X_train.txt")
+trainy = read.table("../project/y_train.txt")
+trainu = read.table("../project/subject_train.txt")
 names(trainy)="Y"
 names(trainu)="user"
 train2 = cbind(trainu,trainy,train)
@@ -14,9 +14,9 @@ names(train2)[1:10]
 dim(train2)
 train2[1:10,1:10]
 
-test = read.table("../project/UCI HAR Dataset/test/X_test.txt")
-testy = read.table("../project/UCI HAR Dataset/test/y_test.txt")
-testu = read.table("../project/UCI HAR Dataset/test/subject_test.txt")
+test = read.table("../project/X_test.txt")
+testy = read.table("../project/y_test.txt")
+testu = read.table("../project/subject_test.txt")
 
 names(testy)="Y"
 names(testu)="user"
@@ -36,7 +36,7 @@ table(test3$user)
 
 ### rename variables
 
-vars = read.table("../project/UCI HAR Dataset/features.txt")
+vars = read.table("../project/features.txt")
 vars2=as.character(vars$V2)
 names(test3)[3:length(names(test3))]=vars2
 names(test3)[2] = "activity"
