@@ -39,31 +39,50 @@ table(test3$user)
 vars = read.table("features.txt")
 vars2=as.character(vars$V2)
 names(test3)[3:length(names(test3))]=vars2
-names(test3)[2] = "activity"
+names(test3)[2] = "activity2"
 
-### get means and sds
-x = names(test3)[-1]
-mymean = rep(0,length(x))
-mysd = rep(0,length(x))
-for (i in 1:length(x)){
-  mymean[i] = mean(test3[,x[i]])
-  mysd[i] = sd(test3[,x[i]])
+
+
+### rename activity levels
+
+mylabs=read.table("activity_labels.txt")
+mylabs$V2 = as.character(mylabs$V2)
+sort(unique(test3$activity2))
+for (i in 1:length(mylabs$V2)){
+test3$activity[test3$activity2==i]=mylabs$V2[i]
 }
 
-mydf = as.data.frame(cbind(Var=x,Mean=mymean,SD=mysd))
-mydf$Mean = as.numeric(as.character(mydf$Mean))
-mydf$SD = as.numeric(as.character(mydf$SD))
-mydf
+class(test3$activity)
+test3$activity=as.factor(test3$activity)
+test3$activity2=NULL
+
+### get vars with means and std's
+test3=test3[,c("user","activity",names(test3)[grepl("[Mm]ean|[Ss]t.*[Dd]ev|[Ss][Dd]|[Ss][Dd]|[Ss][Tt][Dd]",names(test3))])]
+dim(test3)
+table(test3$activity)
+
+### get means and sds
+# x = names(test3)[-1]
+# mymean = rep(0,length(x))
+# mysd = rep(0,length(x))
+# for (i in 1:length(x)){
+#   mymean[i] = mean(test3[,x[i]])
+#   mysd[i] = sd(test3[,x[i]])
+# }
+# 
+# mydf = as.data.frame(cbind(Var=x,Mean=mymean,SD=mysd))
+# mydf$Mean = as.numeric(as.character(mydf$Mean))
+# mydf$SD = as.numeric(as.character(mydf$SD))
+# mydf
 
 
 
 ###Aggregate by subject
-
-aggdata = aggregate(test3,by=list(test3$user,test3$activity),FUN=mean)
+x=names(test3)[-c(1,2)]
+aggdata = aggregate(test3[,x],by=list(user=test3$user,activity=test3$activity),FUN=mean)
 dim(aggdata)
 aggdata[1:10,1:6]
-aggdata$Group.1=NULL
-aggdata$Group.2=NULL
+
 
 ### Output
 
