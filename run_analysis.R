@@ -85,6 +85,6 @@ aggdata[1:10,1:6]
 
 
 ### Output
-
+ 
 write.table(aggdata,file = "../project/project.txt", row.name=FALSE)
 
