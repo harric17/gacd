@@ -3,6 +3,9 @@ Getting and Cleaning Data
 
 ![alt text](http://i.imgur.com/0Y5Dy7y.jpg)
 
+
+The codebook for this dataset is features_info.txt
+
 The run_analysis.R script does the following:
 
 1.  Reads in the 3 training datasets and horizontally concatenates them
