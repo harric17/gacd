@@ -1,6 +1,16 @@
 CodeBook.md
 ========================================================
 
+The run_analysis.R script does the following:
+
+1.  Reads in the 3 training datasets and horizontally concatenates them
+2.  Reads in the 3 testing datasets and horizontally concatenates them
+3.  Vertically concatenates the training and testing datasets from steps 1 and 2
+4.  features.txt is read in and variables are renamed accordingly
+5.  activity_labels.txt is read in and the levels of the activity variable are relabelled accordingly
+6.  Variables not related user, activity, or to means or standard deviations are dropped
+7.  Finally means of all variables are found per subject per activity and output to project.txt
+
 
 The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
@@ -59,9 +69,9 @@ tBodyGyroJerkMean
 
 The complete list of variables of each feature vector is available in 'features.txt'
 Status API Training Shop Blog About
-© 2015 GitHub, Inc. Terms Privacy Security Contact
+Â© 2015 GitHub, Inc. Terms Privacy Security Contact
 
-
+```
 1 tBodyAcc-mean()-X
 2 tBodyAcc-mean()-Y
 3 tBodyAcc-mean()-Z
@@ -624,3 +634,4 @@ Status API Training Shop Blog About
 560 angle(Y,gravityMean)
 561 angle(Z,gravityMean)
 
+```
