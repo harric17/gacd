@@ -11,7 +11,7 @@ names(trainy)="Y"
 names(trainu)="user"
 train2 = cbind(trainu,trainy,train)
 names(train2)[1:10]
-dim(train2)
+dim(train2) 
 train2[1:10,1:10]
 
 test = read.table("X_test.txt")
