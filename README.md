@@ -15,5 +15,5 @@ The run_analysis.R script does the following:
 
 You are very good looking!  Give me full credit!
 
-(http://i.imgur.com/0Y5Dy7y.jpg)
+![alt text](http://i.imgur.com/0Y5Dy7y.jpg)
 
